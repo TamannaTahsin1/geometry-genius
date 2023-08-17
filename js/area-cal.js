@@ -1,60 +1,48 @@
 function calculateTriangleArea(){
-    // get triangle base value
-    const baseField = document.getElementById('triangle-base');
-    const baseValueText = baseField.value;
-    const base = parseFloat(baseValueText)
-    console.log(base)
+    //for triangle 
+    const baseField = getInputValue('triangle-base');
+    const heightField = getInputValue('triangle-height');
 
-    // get triangle height value
-    const heightField = document.getElementById('triangle-height');
-    const heightValueText = heightField.value;
-    const height = parseFloat(heightValueText)
-    console.log(height)
-
-    // calculate total value
-    const area = 0.5 * base * height;
-    console.log(area);
-
-    // show triangle area
-    const areaSpan = document.getElementById('triangle-area');
-    areaSpan.innerText = area;
+    const area = 0.5 * baseField * heightField;
+    setElementInnerText ('triangle-area', area);  
 }
 // for rectangle
 function calculateRectangleArea(){
-    // get rectangle width value
-    const widthField = document.getElementById('rectangle-weight');
-    const widthValueText = widthField.value;
-    const width = parseFloat(widthValueText);
-    console.log(width)
+    const widthField = getInputValue('rectangle-weight'); 
+    const lengthField = getInputValue('rectangle-length');
 
-    // get rectangle length value
-    const lengthField = document.getElementById('rectangle-length');
-    const lengthValueText = lengthField.value;
-    const length = parseFloat(lengthValueText);
-    console.log(length)
-
-    // calculate total value
-    const area = width* length;
-    console.log(area);
-    
-    // show rectangle area
-    const rectAreaSpan = document.getElementById('rectangle-area');
-    rectAreaSpan.innerText = area;
+    const area = widthField * lengthField;
+    setElementInnerText('rectangle-area',area);
 }
 // for  Parallelogram 
 function calculateParallelogramArea(){
-    const base = getInputValue('parallelogram-base');
-    console.log(base)
+    const base = getInputValue('parallelogram-base');  
     const height = getInputValue('parallelogram-height');
-    console.log(height)
 
     const area = base * height;
     setElementInnerText('parallelogram-area', area);
+}
+// for Rhombus
+function calculateRhombusArea(){
+    const rhombusFirstArea = getInputValue('rhombus-first-area');
+    const rhombusSecondArea = getInputValue('rhombus-second-area');
+
+    const area = 0.5* rhombusFirstArea * rhombusSecondArea;
+    setElementInnerText('rhombus-area', area)
+}
+// for Pentagon
+function calculatePentagonArea(){
+    const pentagonPerimeter = getInputValue('pentagon-perimeter');
+    const pentagonBase = getInputValue('pentagon-base');
+
+    const area = 0.5 * pentagonPerimeter * pentagonBase;
+    setElementInnerText('pentagon-area', area);
 }
 // for ellipse 
 function calculateEllipseArea(){
     const majorRadius = getInputValue('ellipse-major-radius') ;
     const minorRadius = getInputValue('ellipse-minor-radius') ;
+
     const area = 3.14 * majorRadius * minorRadius;
     setElementInnerText('ellipse-area', area);
 
@@ -66,7 +54,7 @@ function getInputValue(fieldId){
     const value = parseFloat (inputValueText);
     return value; 
 }
-// reuseable set span, p, div etc text
+// reuseable set span, p, div etc text (for all)
     function setElementInnerText(elementId, area){
     const element = document.getElementById(elementId);
     element.innerText = area;
